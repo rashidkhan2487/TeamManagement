@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".UI.DetailView"
+    >
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="userViewModel"
+            type="com.example.teammanagement.viewmodel.TeamDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/team_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_huge"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="@dimen/spacing_large"
+            app:cardElevation="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/label_TeamName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@{userViewModel.getFullTeamName()}"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.462"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="RtlCompat"
+                    tools:text="Team Name" />
+
+                <TextView
+                    android:id="@+id/lblTeamWonTitleDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Total Won"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.03"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/label_TeamName"
+                    app:layout_constraintVertical_bias="0.172" />
+
+                <TextView
+                    android:id="@+id/lblTeamLoseTitleDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="36dp"
+                    android:text="Total Lose"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblTeamWonTitleDetail" />
+
+                <TextView
+                    android:id="@+id/lblTeamWonValDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="48dp"
+                    android:layout_marginRight="48dp"
+                    android:text="@{userViewModel.getTeamWin()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.907"
+                    app:layout_constraintStart_toEndOf="@+id/lblTeamLoseTitleDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/label_TeamName" />
+
+                <TextView
+                    android:id="@+id/lblTextLoseValDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="36dp"
+                    android:text="@{userViewModel.getTeamLoss()}"
+                    app:layout_constraintStart_toEndOf="@+id/lblTeamLoseTitleDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/lblTeamWonValDetail" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!-- <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/team_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:text="@{userViewModel.getFullTeamName()}"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat"
+                tools:text="Ahmad Shubita" />
+
+            <TextView
+                android:id="@+id/team_win"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/label_TeamName"
+                android:layout_alignStart="@+id/label_TeamName"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:text="@{userViewModel.getTeamWin()}"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="15sp"
+                tools:ignore="RtlCompat"
+                tools:text="0729-256-147" />
+
+            <TextView
+                android:id="@+id/team_loss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/label_TeamWon"
+                android:layout_alignStart="@+id/label_TeamWon"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:text="@{userViewModel.getTeamLoss()}"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="15sp"
+                tools:ignore="RtlCompat"
+
+                tools:text="gary.allen@example.com" />
+
+        </LinearLayout>-->
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/playerList"
+            android:layout_width="392dp"
+            android:layout_height="428dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/team_card" />
+
+        <TextView
+            android:id="@+id/lblPlayers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Players"
+
+            android:textColor="@color/colorAccent"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/playerList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.447"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/team_card"
+            app:layout_constraintVertical_bias="0.125" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
